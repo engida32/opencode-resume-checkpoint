@@ -39,14 +39,18 @@
     "docs",
     "README.md",
     "LICENSE",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "CODE_OF_CONDUCT.md"
   ],
   "scripts": {
     "build": "esbuild src/plugin.js --bundle --platform=node --format=esm --external:@opencode-ai/plugin --outfile=dist/plugin.js --sourcemap",
     "prepare": "npm run build",
-    "test": "node --test",
+    "test": "npm run build && node --test",
     "check": "node --check src/plugin.js && node --check src/checkpoint.js && node --check src/redact.js && node --check src/git.js && node --check scripts/install.js && node --check scripts/install-lib.js",
-    "pack": "npm pack --dry-run"
+    "pack": "npm pack --dry-run",
+    "prepublishOnly": "npm run check && npm test"
   },
   "peerDependencies": {
     "@opencode-ai/plugin": ">=1.18.0 <2"
