@@ -22,17 +22,16 @@
   "license": "MIT",
   "author": "engida32",
   "type": "module",
-  "main": "src/plugin.js",
+  "main": "dist/plugin.js",
   "exports": {
-    ".": "./src/plugin.js",
-    "./server": "./src/plugin.js",
-    "./checkpoint": "./src/checkpoint.js",
-    "./redact": "./src/redact.js"
+    ".": "./dist/plugin.js",
+    "./server": "./dist/plugin.js"
   },
   "bin": {
     "opencode-resume-checkpoint": "scripts/install.js"
   },
   "files": [
+    "dist",
     "src",
     "commands",
     "skills",
@@ -43,15 +42,18 @@
     "CHANGELOG.md"
   ],
   "scripts": {
+    "build": "esbuild src/plugin.js --bundle --platform=node --format=esm --external:@opencode-ai/plugin --outfile=dist/plugin.js --sourcemap",
+    "prepare": "npm run build",
     "test": "node --test",
-    "check": "node --check src/plugin.js && node --check src/checkpoint.js && node --check src/redact.js && node --check scripts/install.js && node --check scripts/install-lib.js",
+    "check": "node --check src/plugin.js && node --check src/checkpoint.js && node --check src/redact.js && node --check src/git.js && node --check scripts/install.js && node --check scripts/install-lib.js",
     "pack": "npm pack --dry-run"
   },
   "peerDependencies": {
     "@opencode-ai/plugin": ">=1.18.0 <2"
   },
   "devDependencies": {
-    "@opencode-ai/plugin": "1.18.25"
+    "@opencode-ai/plugin": "1.18.25",
+    "esbuild": "^0.28.2"
   },
   "engines": {
     "node": ">=20"
