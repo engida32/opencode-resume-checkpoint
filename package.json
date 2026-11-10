@@ -1,0 +1,62 @@
+{
+  "name": "opencode-resume-checkpoint",
+  "version": "0.1.0",
+  "description": "Rolling checkpoints, stale-todo reconciliation, and a /resume skill for OpenCode interrupted sessions.",
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "resume",
+    "checkpoint",
+    "session",
+    "todos",
+    "ai"
+  ],
+  "homepage": "https://github.com/engida32/opencode-resume-checkpoint#readme",
+  "bugs": {
+    "url": "https://github.com/engida32/opencode-resume-checkpoint/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/engida32/opencode-resume-checkpoint.git"
+  },
+  "license": "MIT",
+  "author": "engida32",
+  "type": "module",
+  "main": "src/plugin.js",
+  "exports": {
+    ".": "./src/plugin.js",
+    "./server": "./src/plugin.js",
+    "./checkpoint": "./src/checkpoint.js",
+    "./redact": "./src/redact.js"
+  },
+  "bin": {
+    "opencode-resume-checkpoint": "scripts/install.js"
+  },
+  "files": [
+    "src",
+    "commands",
+    "skills",
+    "scripts",
+    "docs",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/plugin.js && node --check src/checkpoint.js && node --check src/redact.js && node --check scripts/install.js && node --check scripts/install-lib.js",
+    "pack": "npm pack --dry-run"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": ">=1.18.0 <2"
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "1.18.25"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
