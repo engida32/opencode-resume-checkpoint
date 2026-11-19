@@ -1,5 +1,8 @@
 # opencode-resume-checkpoint
 
+[![CI](https://github.com/engida32/opencode-resume-checkpoint/actions/workflows/ci.yml/badge.svg)](https://github.com/engida32/opencode-resume-checkpoint/actions/workflows/ci.yml)
+![License: MIT](https://img.shields.io/badge/license-MIT-blue)
+
 Resume interrupted OpenCode sessions from the last verified stopping point.
 
 OpenCode can stop in the middle of a tool call, lose a provider stream, compact
